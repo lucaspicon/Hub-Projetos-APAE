@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub de Projetos - APAE Brusque</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                apaeGreen: '#008040', 
+                apaeYellow: '#F5A623',
+                apaeLight: '#F9FBF9',
+                apaeAccentGreen: '#E8F5E9' 
+              }
+            }
+          }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #F9FBF9; }
+        .tilda-shadow { 
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05), 0 10px 20px -5px rgba(0,0,0,0.02); 
+            transition: all 0.3s ease;
+        }
+        .input-focus {
+            transition: all 0.3s ease-in-out;
+            border-width: 2px;
+        }
+        .input-focus:focus { 
+            border-color: #008040; 
+            outline: none; 
+            box-shadow: 0 0 0 4px rgba(0, 128, 64, 0.1);
+        }
+        .hidden-state { display: none; }
+    </style>
+</head>
+<body class="text-gray-800 bg-gray-50">
+
+    <header class="bg-apaeGreen text-white py-24 px-6 relative text-center">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Hub de Projetos e Ideias APAE</h1>
+            <p class="text-xl font-light opacity-90 mb-8">Setor de Captação de Recursos</p>
+            <div class="h-2 w-32 bg-apaeYellow mx-auto rounded-full"></div>
+        </div>
+    </header>
+
+    <div id="success-message" class="max-w-3xl mx-auto mt-10 px-4 hidden-state text-center">
+        <div class="bg-white rounded-2xl tilda-shadow p-12 border-t-8 border-apaeGreen">
+            <div class="text-apaeGreen text-6xl mb-6"><i class="fa-solid fa-circle-check"></i></div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Proposta Recebida com Sucesso!</h2>
+            <p class="text-lg text-gray-600 leading-relaxed mb-8">Sua ideia já está no nosso radar estratégico.</p>
+            <button onclick="window.location.reload()" class="bg-apaeGreen text-white px-10 py-4 rounded-full font-bold hover:bg-green-800 transition shadow-lg">Enviar outra proposta</button>
+        </div>
+    </div>
+
+    <section id="main-form-section" class="max-w-6xl mx-auto -mt-12 px-4 mb-20 relative z-20 text-center">
+        <div class="bg-white rounded-3xl tilda-shadow p-10 md:p-16 border border-gray-100">
+            <p class="text-xl leading-relaxed text-gray-700 font-medium mb-12">
+                Para modernizar e dar agilidade à nossa Captação de Recursos, o <strong>Hub de Projetos</strong> agora é o canal oficial e obrigatório para a formalização de necessidades em todas as áreas da APAE.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-8 rounded-2xl bg-apaeAccentGreen hover:shadow-lg transition">
+                    <h3 class="font-bold text-lg mb-2 text-apaeGreen">Prioridade Estratégica</h3>
+                    <p class="text-sm text-gray-600">Ideias registradas alimentam nosso banco de dados estratégico.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-apaeAccentGreen hover:shadow-lg transition">
+                    <h3 class="font-bold text-lg mb-2 text-apaeGreen">Refino Técnico</h3>
+                    <p class="text-sm text-gray-600">Transformamos sua demanda em um projeto pronto para editais.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-apaeAccentGreen hover:shadow-lg transition">
+                    <h3 class="font-bold text-lg mb-2 text-apaeGreen">Agilidade Institucional</h3>
+                    <p class="text-sm text-gray-600">Ganhamos velocidade para aproveitar oportunidades de financiamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="form-container" class="max-w-5xl mx-auto px-4 mb-32">
+        <form id="hubForm" class="space-y-12"> <input type="hidden" name="data_proposta" id="data_proposta_hidden">
+
+            <div class="bg-white rounded-2xl tilda-shadow overflow-hidden">
+                <div class="bg-apaeGreen p-6 flex items-center">
+                    <i class="fa-solid fa-user-circle text-apaeYellow text-2xl mr-4 pl-4"></i>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-widest">1. Identificação</h3>
+                </div>
+                <div class="p-10 space-y-8 bg-gray-50">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                         <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-3">E-mail institucional *</label>
+                            <input type="email" name="email" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="exemplo@apaebrusque.org.br">
+                        </div>
+                        <div>
+                             <label class="block text-sm font-bold text-gray-700 mb-3">Setor / Área *</label>
+                            <input type="text" name="setor" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-3">Pessoa proponente *</label>
+                            <input type="text" name="proponente" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white">
+                        </div>
+                        <div>
+                             <label class="block text-sm font-bold text-gray-700 mb-3">Descrição / Nome do projeto</label>
+                            <input type="text" name="nome_projeto" class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl tilda-shadow overflow-hidden">
+                 <div class="bg-apaeGreen p-6 flex items-center">
+                    <i class="fa-solid fa-stethoscope text-apaeYellow text-2xl mr-4 pl-4"></i>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-widest">2. Diagnóstico e Impacto</h3>
+                </div>
+                <div class="p-10 space-y-10 bg-gray-50">
+                    <div>
+                        <label class="block text-base font-bold text-gray-800 mb-2">Qual o problema ou necessidade? *</label>
+                        <textarea name="problema" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="O que acontece hoje? Quem é afetado?"></textarea>
+                    </div>
+
+                    <div class="bg-yellow-50 p-8 rounded-2xl border-l-8 border-apaeYellow shadow-sm">
+                        <label class="block text-base font-bold text-orange-900 mb-2 uppercase">Quais as consequências de NÃO sanarmos isso? *</label>
+                        <textarea name="consequencias" rows="4" required class="input-focus w-full p-4 border-2 border-orange-200 rounded-xl bg-white" placeholder="Impactos em usuários, riscos ou custos..."></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-base font-bold text-gray-800 mb-3">Solução proposta *</label>
+                            <textarea name="solucao" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"></textarea>
+                        </div>
+                        <div>
+                             <label class="block text-base font-bold text-gray-800 mb-2">Impacto esperado *</label>
+                            <textarea name="beneficiados" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="Nº de usuários, locais beneficiados..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl tilda-shadow overflow-hidden">
+                 <div class="bg-apaeGreen p-6 flex items-center">
+                    <i class="fa-solid fa-coins text-apaeYellow text-2xl mr-4 pl-4"></i>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-widest">3. Viabilidade e Recursos</h3>
+                </div>
+                <div class="p-10 space-y-12 bg-gray-50"> <div>
+                        <label class="block text-base font-bold text-gray-800 mb-6">Recurso necessário *</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="flex items-center p-4 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="Bens" class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Aquisição de bens (Equipamentos, TI)</span>
+                            </label>
+                            <label class="flex items-center p-4 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="Obras" class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Obra ou reforma</span>
+                            </label>
+                            <label class="flex items-center p-4 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="RH" class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Capacitação ou RH</span>
+                            </label>
+                            <label class="flex items-center p-4 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="Materiais" class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Material de consumo</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 p-8 rounded-2xl border border-green-100">
+                        <label class="block text-lg font-bold text-apaeGreen mb-4">Status do Orçamento / Cotação *</label>
+                        <div class="space-y-4">
+                            <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Estimativa Simples" class="w-6 h-6 accent-apaeGreen mr-4" required> 
+                                <span class="text-sm font-medium">Tenho estimativa simples (Link/Preço ref.)</span>
+                            </label>
+                            <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Cotações" class="w-6 h-6 accent-apaeGreen mr-4"> 
+                                <span class="text-sm font-medium">Já possuo cotações preliminares ou oficiais</span>
+                            </label>
+                             <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Apoio" class="w-6 h-6 accent-apaeGreen mr-4"> 
+                                <span class="text-sm font-medium">Preciso de apoio para orçar</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <label class="block text-base font-bold text-gray-800 mb-6 tracking-tight">A execução necessita de serviços especializados? *</label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="especializado" value="Não" class="w-5 h-5 accent-apaeGreen mr-3" required> 
+                                Não, compra ou instalação simples
+                            </label>
+                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="especializado" value="Sim" class="w-5 h-5 accent-apaeGreen mr-3"> 
+                                Sim (Engenharia, obras, laudos)
+                            </label>
+                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="especializado" value="Não sei" class="w-5 h-5 accent-apaeGreen mr-3"> 
+                                Não sei informar
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <label class="block text-base font-bold text-gray-800 mb-4  tracking-tight">Observações Adicionais</label>
+                        <textarea name="observacoes" rows="4" class="input-focus w-full p-5 border-2 border-gray-200 rounded-xl bg-white" placeholder="Espaço para detalhes extras sobre o projeto..."></textarea>
+                    </div>
+
+                    <div class="pt-6">
+                         <label class="block text-base font-bold text-gray-800 mb-4">Anexos (Opcional)</label>
+                        <div class="border-4 border-dashed border-green-100 p-12 text-center rounded-2xl bg-white hover:bg-green-50 cursor-pointer relative transition-all group">
+                            <input type="file" name="anexos" id="fileInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            <i class="fa-solid fa-cloud-arrow-up text-apaeGreen text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+                            <span id="fileName" class="block text-base font-bold text-gray-700 group-hover:text-apaeGreen">Clique ou arraste arquivos aqui</span>
+                            <p class="text-xs text-gray-400 mt-2 italic font-medium">Formatos aceitos: PDF, Imagens, Excel, Word</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-20 pb-10 flex flex-col items-center">
+                <button type="submit" class="w-full md:w-2/3 bg-apaeGreen hover:bg-green-800 text-white font-bold py-6 rounded-full text-2xl shadow-xl transition-all transform hover:scale-[1.03] flex items-center justify-center">
+                    ENVIAR PARA CAPTAÇÃO <i class="fa-solid fa-paper-plane ml-4 text-lg"></i>
+                </button>
+                <p class="text-center text-[11px] text-gray-400 mt-8 tracking-widest uppercase font-bold italic opacity-70">
+                    Processo Oficial Interno - APAE Brusque
+                </p>
+            </div>
+        </form>
+    </main>
+
+    <footer class="bg-gray-100 pt-20 pb-10 px-6 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 items-start text-center md:text-left">
+                <div class="space-y-4">
+                    <h4 class="text-apaeGreen font-bold uppercase tracking-wide">Endereço</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Av. Hugo Schlosser, 236 - Jardim Maluche,<br>Brusque - SC, 88354-300
+                    </p>
+                    <div class="mt-6">
+                        <p class="font-bold text-gray-800">(47) 3351-2482</p>
+                        <p class="text-apaeGreen font-medium text-sm">contato@apaebrusque.org.br</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <img src="logoFooter.PNG" alt="Logo APAE" class="h-52 w-auto">
+                </div>
+                <div class="space-y-8 flex flex-col items-center md:items-end">
+                    <div>
+                        <h4 class="text-apaeGreen font-bold mb-4 text-center md:text-right italic">Redes Sociais</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-apaeYellow p-3 rounded-xl hover:scale-110 transition shadow-sm"><i class="fa-brands fa-instagram text-xl"></i></a>
+                            <a href="#" class="bg-apaeYellow p-3 rounded-xl hover:scale-110 transition shadow-sm"><i class="fa-brands fa-youtube text-xl"></i></a>
+                            <a href="#" class="bg-apaeYellow p-3 rounded-xl hover:scale-110 transition shadow-sm"><i class="fa-brands fa-facebook-f text-xl"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-gray-400 uppercase font-bold tracking-[0.2em] mt-8">© 2026 APAE Brusque</p>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-dashed border-green-200 text-center">
+                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em]">Feito por Lucas Picon</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('data_proposta_hidden').value = new Date().toLocaleDateString('pt-BR');
+    });
+
+    const fileInput = document.getElementById('fileInput');
+    const fileNameSpan = document.getElementById('fileName');
+    let base64File = "";
+    let fileName = "";
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            fileName = file.name;
+            fileNameSpan.textContent = '✅ Pronto: ' + fileName;
+            fileNameSpan.classList.add('text-apaeGreen', 'font-black');
+            const reader = new FileReader();
+            reader.onload = (event) => { base64File = event.target.result; };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    const form = document.getElementById('hubForm');
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzuP6MMjQeacZtlG_zcvIf02vyapmtTWZrjduoHFxNVnfE0a8XPb7XXc-gJd7U6dajW/exec';
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> ENVIANDO...';
+
+        const formData = new FormData(form);
+        const dataObj = Object.fromEntries(formData.entries());
+        
+        const recursos = [];
+        form.querySelectorAll('input[name="recurso[]"]:checked').forEach(cb => { recursos.push(cb.value); });
+        dataObj.recurso = recursos.join(", ");
+        dataObj.fileData = base64File;
+        dataObj.fileName = fileName;
+
+        fetch(scriptURL, { 
+            method: 'POST', 
+            mode: 'no-cors', 
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(dataObj) 
+        })
+        .then(() => {
+            document.getElementById('form-container').classList.add('hidden-state');
+            document.getElementById('main-form-section').classList.add('hidden-state');
+            document.getElementById('success-message').classList.remove('hidden-state');
+            window.scrollTo(0, 0);
+        })
+        .catch(() => {
+            alert('Erro ao enviar. Verifique a conexão.');
+            btn.disabled = false;
+            btn.innerHTML = 'ENVIAR PARA CAPTAÇÃO <i class="fa-solid fa-paper-plane ml-3"></i>';
+        });
+    });
+    </script>
+</body>
+</html>
