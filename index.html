@@ -105,15 +105,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="p-8 rounded-2xl bg-apaeAccentGreen/50 border border-white hover:shadow-lg transition-all duration-300">
                     <h3 class="font-bold text-lg mb-2 text-apaeGreen">Prioridade Estratégica</h3>
-                    <p class="text-sm text-gray-600">Registro oficial para o banco de dados da instituição.</p>
+                    <p class="text-sm text-gray-600">Ideias não registradas correm o risco de serem esquecidas. Aqui, elas entram no nosso radar estratégico alimentando um banco de dados.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-apaeAccentGreen/50 border border-white hover:shadow-lg transition-all duration-300">
                     <h3 class="font-bold text-lg mb-2 text-apaeGreen">Refino Técnico</h3>
-                    <p class="text-sm text-gray-600">Análise técnica para editais e emendas parlamentares.</p>
+                    <p class="text-sm text-gray-600">Nosso setor irá transformar sua demanda em um projeto de alto nível, pronto para editais.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-apaeAccentGreen/50 border border-white hover:shadow-lg transition-all duration-300">
                     <h3 class="font-bold text-lg mb-2 text-apaeGreen">Agilidade Real</h3>
-                    <p class="text-sm text-gray-600">Velocidade na orçamentação e execução de melhorias.</p>
+                    <p class="text-sm text-gray-600">Com as necessidades já estruturadas, ganhamos velocidade para aproveitar oportunidades de financiamento que surgem com prazos curtos.</p>
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
                 <div class="p-10 space-y-8 bg-gray-50/50">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                          <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-tighter">E-mail Corporativo *</label>
+                            <label class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-tighter">E-mail *</label>
                             <input type="email" name="email" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="exemplo@apaebrusque.org.br">
                         </div>
                         <div>
@@ -141,7 +141,7 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-tighter">Responsável pela Proposta *</label>
+                            <label class="block text-sm font-bold text-gray-700 mb-3 uppercase tracking-tighter">Proponente *</label>
                             <input type="text" name="proponente" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white">
                         </div>
                         <div>
@@ -165,17 +165,17 @@
 
                     <div class="bg-yellow-50/80 backdrop-blur-sm p-8 rounded-2xl border-l-8 border-apaeYellow shadow-sm">
                         <label class="block text-base font-bold text-orange-900 mb-2 uppercase">Riscos da Não Execução *</label>
-                        <textarea name="consequencias" rows="4" required class="input-focus w-full p-4 border-2 border-orange-200 rounded-xl bg-white"></textarea>
+                        <textarea name="consequencias" rows="4" required class="input-focus w-full p-4 border-2 border-orange-200 rounded-xl bg-white" placeholder="O que acontece se não resolvermos isso agora?"></textarea>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
                             <label class="block text-base font-bold text-gray-800 mb-3">Solução Proposta *</label>
-                            <textarea name="solucao" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"></textarea>
+                            <textarea name="solucao" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="Como pretendemos resolver o problema?"></textarea>
                         </div>
                         <div>
                              <label class="block text-base font-bold text-gray-800 mb-2">Quem será beneficiado? *</label>
-                            <textarea name="beneficiados" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"></textarea>
+                            <textarea name="beneficiados" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="Quem será impactado positivamente?"></textarea>
                         </div>
                     </div>
                 </div>
@@ -228,31 +228,31 @@
                     </div>
 
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-6 uppercase tracking-tighter">Necessita de serviços especializados? (Engenharia) *</label>
+                        <label class="block text-base font-bold text-gray-800 mb-6 uppercase tracking-tighter">Necessita de serviços especializados? *</label>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="especializado" value="Não" class="w-5 h-5 accent-apaeGreen mr-3" required> Não
+                                <input type="radio" name="especializado" value="Não" class="w-5 h-5 accent-apaeGreen mr-3" required> Não, compra simples.
                             </label>
                             <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="especializado" value="Sim" class="w-5 h-5 accent-apaeGreen mr-3"> Sim
+                                <input type="radio" name="especializado" value="Sim" class="w-5 h-5 accent-apaeGreen mr-3"> Sim.
                             </label>
                             <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="especializado" value="Não sei" class="w-5 h-5 accent-apaeGreen mr-3"> Não sei
+                                <input type="radio" name="especializado" value="Não sei" class="w-5 h-5 accent-apaeGreen mr-3"> Não sei informar.
                             </label>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-4 uppercase tracking-tighter">Notas Adicionais</label>
+                        <label class="block text-base font-bold text-gray-800 mb-4 uppercase tracking-tighter">Observações / Notas Adicionais</label>
                         <textarea name="observacoes" rows="4" class="input-focus w-full p-5 border-2 border-gray-200 rounded-xl bg-white" placeholder="Contexto extra..."></textarea>
                     </div>
 
-                    <div>
-                         <label class="block text-base font-bold text-gray-800 mb-4">Anexos (Opcional)</label>
+                    <div class="pt-6">
+                         <label class="block text-base font-bold text-gray-800 mb-4">Anexos / Referências (Opcional)</label>
                         <div class="border-4 border-dashed border-green-100 p-12 text-center rounded-2xl bg-white hover:bg-green-50 cursor-pointer relative transition-all group">
                             <input type="file" name="anexos" id="fileInput" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
                             <i class="fa-solid fa-cloud-arrow-up text-apaeGreen text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
-                            <span id="fileName" class="block text-base font-bold text-gray-700">Clique para anexar</span>
+                            <span id="fileName" class="block text-base font-bold text-gray-700 group-hover:text-apaeGreen">Clique ou arraste o projeto aqui</span>
                         </div>
                     </div>
                 </div>
