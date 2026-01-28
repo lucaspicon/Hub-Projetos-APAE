@@ -210,19 +210,27 @@
                     </div>
 
                     <div class="bg-green-50 p-8 rounded-2xl border border-green-100">
-                        <label class="block text-lg font-bold text-apaeGreen mb-4">Maturidade do Orçamento *</label>
+                        <label class="block text-lg font-bold text-apaeGreen mb-4">Status do orçamento/cotação *</label>
                         <div class="space-y-4">
                             <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
                                 <input type="radio" name="status_orc" value="Estimativa" class="w-6 h-6 accent-apaeGreen mr-4" required> 
-                                <span class="text-sm font-medium">Estimativa Simples (Link/Ref)</span>
+                                <span class="text-sm font-medium">Tenho uma estimativa simples (Possuo link/preço de referencia)</span>
                             </label>
                             <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
                                 <input type="radio" name="status_orc" value="Cotações" class="w-6 h-6 accent-apaeGreen mr-4"> 
-                                <span class="text-sm font-medium">Possuo Cotações Oficiais</span>
+                                <span class="text-sm font-medium">Tenho 1-2 cotações preliminares (Não oficiais mas serve como noção de custo)</span>
                             </label>
                              <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
                                 <input type="radio" name="status_orc" value="Apoio" class="w-6 h-6 accent-apaeGreen mr-4"> 
-                                <span class="text-sm font-medium">Preciso de apoio técnico</span>
+                                <span class="text-sm font-medium">Tenho 3 cotações oficiais</span>
+                            </label>
+                            <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Apoio" class="w-6 h-6 accent-apaeGreen mr-4"> 
+                                <span class="text-sm font-medium">Preciso de apoio para orçar (Setor de captação/projetos/compras fará a cotação)</span>
+                            </label>
+                            <label class="flex items-center p-4 bg-white rounded-xl cursor-pointer border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Apoio" class="w-6 h-6 accent-apaeGreen mr-4"> 
+                                <span class="text-sm font-medium">Não se aplica (Projeto sem custo financeiro)</span>
                             </label>
                         </div>
                     </div>
