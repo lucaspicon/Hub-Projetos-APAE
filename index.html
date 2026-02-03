@@ -1,40 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hub de Projetos - APAE Brusque</title>
     <link rel="icon" type="image/png" href="favicon-32x32.png">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
+
     <script>
         tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                apaeGreen: '#73b057', 
-                apaeYellow: '#F5A623',
-                apaeLight: '#F9FBF9',
-                apaeAccentGreen: '#f1f8ee'
-              }
+            theme: {
+                extend: {
+                    colors: {
+                        apaeGreen: '#73b057',
+                        apaeYellow: '#F5A623',
+                        apaeLight: '#F9FBF9',
+                        apaeAccentGreen: '#f1f8ee'
+                    }
+                }
             }
-          }
         }
     </script>
-    
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f1f1f1; }
-        ::-webkit-scrollbar-thumb { background: #73b057; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #5d8f46; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-        body { 
-            font-family: 'Montserrat', sans-serif; 
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #73b057;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5d8f46;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
             background-color: #F9FBF9;
             background-image: url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.9-5.9L45.9 0l-5.9 5.9-5.9-5.9L32.7 0l5.9 5.9-5.9 5.9 1.414 1.414 5.9-5.9 5.9 5.9 1.414-1.414-5.9-5.9zM40 32c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.9-5.9L16.72 32l-5.9 5.9-5.9-5.9L3.515 32l5.9 5.9-5.9 5.9 1.414 1.414 5.9-5.9 5.9 5.9 1.414-1.414-5.9-5.9zM32 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM56 32c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM24 64c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.9-5.9L61.9 48l-5.9 5.9-5.9-5.9L48.7 48l5.9 5.9-5.9 5.9 1.414 1.414 5.9-5.9 5.9 5.9 1.414-1.414-5.9-5.9zM8 64c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6z' fill='%2373b057' fill-opacity='0.05'/%3E%3C/svg%3E");
         }
@@ -44,34 +57,118 @@
             background-size: 400% 400%;
             animation: gradientShift 12s ease infinite;
         }
-        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        .tilda-shadow { box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05); }
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
 
-        .input-focus { transition: all 0.3s ease; border-width: 2px; }
-        .input-focus:focus { border-color: #73b057; outline: none; box-shadow: 0 0 15px rgba(115, 176, 87, 0.15); }
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .tilda-shadow {
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-focus {
+            transition: all 0.3s ease;
+            border-width: 2px;
+        }
+
+        .input-focus:focus {
+            border-color: #73b057;
+            outline: none;
+            box-shadow: 0 0 15px rgba(115, 176, 87, 0.15);
+        }
 
         /* Estilo iOS Switch */
-        .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: #73b057; }
-        input:checked + .slider:before { transform: translateX(24px); }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
 
-        #progress-bar { position: fixed; top: 0; left: 0; height: 5px; background: #F5A623; width: 0%; z-index: 9999; transition: width 0.2s ease; }
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .hidden-state { display: none; }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #73b057;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(24px);
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: #F5A623;
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.2s ease;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hidden-state {
+            display: none;
+        }
     </style>
 </head>
+
 <body class="text-gray-800">
 
     <div id="progress-bar"></div>
 
     <header class="animated-header text-white py-24 px-6 text-center shadow-lg">
         <div class="max-w-4xl mx-auto relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight drop-shadow-md">Hub de Projetos e Ideias APAE</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight drop-shadow-md">Hub de Projetos e Ideias APAE
+            </h1>
             <p class="text-xl font-light opacity-90 mb-8 tracking-wide">Setor de Captação de Recursos</p>
             <div class="h-2 w-32 bg-apaeYellow mx-auto rounded-full"></div>
         </div>
@@ -82,7 +179,8 @@
             <div class="text-apaeGreen text-7xl mb-6"><i class="fa-solid fa-circle-check"></i></div>
             <h2 class="text-3xl font-bold text-gray-800 mb-4">Proposta Recebida com Sucesso!</h2>
             <p class="text-lg text-gray-600 mb-8 font-medium italic">"Sua ideia transforma vidas na APAE Brusque."</p>
-            <button onclick="window.location.reload()" class="bg-apaeGreen text-white px-12 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl active:scale-95">
+            <button onclick="window.location.reload()"
+                class="bg-apaeGreen text-white px-12 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl active:scale-95">
                 Enviar outra proposta
             </button>
         </div>
@@ -91,23 +189,28 @@
     <section id="main-form-section" class="max-w-6xl mx-auto -mt-12 px-4 mb-20 relative z-20 text-center reveal">
         <div class="bg-white/80 backdrop-blur-sm rounded-3xl tilda-shadow p-10 md:p-16 border border-gray-100">
             <p class="text-xl leading-relaxed text-gray-700 font-medium mb-12">
-                O <strong>Hub de Projetos</strong> é o canal oficial para transformar demandas em realidade. Sua contribuição alimenta nosso planejamento estratégico de captação.
+                O <strong>Hub de Projetos</strong> é o canal oficial para transformar demandas em realidade. Sua
+                contribuição alimenta nosso planejamento estratégico de captação.
             </p>
             <p class="text-xl leading-relaxed text-gray-700 font-medium mb-12">
-                <strong>Não há limite de envios.</strong> Encorajamos todos os setores a registrar desde pequenas necessidades de materiais até grandes projetos de inovação. Vamos transformar sua ideia em recurso!
+                <strong>Não há limite de envios.</strong> Encorajamos todos os setores a registrar desde pequenas
+                necessidades de materiais até grandes projetos de inovação. Vamos transformar sua ideia em recurso!
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="p-8 rounded-2xl bg-apaeAccentGreen/50 border border-white">
                     <h3 class="font-bold text-lg mb-2 text-apaeGreen">Prioridade Estratégica</h3>
-                    <p class="text-sm text-gray-600">Ideias não registradas correm o risco de serem esquecidas. Aqui, elas entram no nosso radar estratégico alimentando um banco de dados.</p>
+                    <p class="text-sm text-gray-600">Ideias não registradas correm o risco de serem esquecidas. Aqui,
+                        elas entram no nosso radar estratégico alimentando um banco de dados.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-apaeAccentGreen/50 border border-white">
                     <h3 class="font-bold text-lg mb-2 text-apaeGreen">Refino Técnico</h3>
-                    <p class="text-sm text-gray-600">Nosso setor irá transformar sua demanda em um projeto de alto nível, pronto para editais.</p>
+                    <p class="text-sm text-gray-600">Nosso setor irá transformar sua demanda em um projeto de alto
+                        nível, pronto para editais.</p>
                 </div>
                 <div class="p-8 rounded-2xl bg-apaeAccentGreen/50 border border-white">
                     <h3 class="font-bold text-lg mb-2 text-apaeGreen">Agilidade Real</h3>
-                    <p class="text-sm text-gray-600">Com as necessidades já estruturadas, ganhamos velocidade para aproveitar oportunidades de financiamento que surgem com prazos curtos.</p>
+                    <p class="text-sm text-gray-600">Com as necessidades já estruturadas, ganhamos velocidade para
+                        aproveitar oportunidades de financiamento que surgem com prazos curtos.</p>
                 </div>
             </div>
         </div>
@@ -125,16 +228,32 @@
                 <div class="p-10 space-y-8 bg-gray-50/50">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Setor / Área *</label>
-                            <input type="text" name="setor" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white">
+                            <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Setor / Área
+                                *</label>
+                            <input type="text" name="setor" required
+                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
+                                placeholder="Administrativo, Saúde...">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Proponente *</label>
-                            <input type="text" name="proponente" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white">
+                            <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Proponente
+                                *</label>
+                            <input type="text" name="proponente" required
+                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
+                                placeholder="Seu nome aqui">
                         </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Nome/Titúlo do Projeto *</label>
-                            <input type="text" name="nome_projeto" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white">
+                        <div class="md:col-span-1">
+                            <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Nome/Titúlo do
+                                Projeto *</label>
+                            <input type="text" name="nome_projeto" required
+                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
+                                placeholder="Seja criativo!">
+                        </div>
+                        <div class="md:col-span-1">
+                            <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Email corporativo
+                                *</label>
+                            <input type="text" name="nome_projeto" required
+                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
+                                placeholder="nome@apaebrusque.org.br">
                         </div>
                     </div>
                 </div>
@@ -147,32 +266,46 @@
                 </div>
                 <div class="p-10 space-y-12 bg-gray-50/50">
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-2">Descrição da Necessidade *</label>
-                        <textarea name="problema" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="O que motivou esta ideia?"></textarea>
+                        <label class="block text-base font-bold text-gray-800 mb-2">Descrição da necessidade *</label>
+                        <textarea name="problema" rows="4" required
+                            class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
+                            placeholder="O que motivou esta ideia?"></textarea>
                     </div>
 
                     <div class="bg-yellow-50 p-8 rounded-2xl border-l-8 border-apaeYellow shadow-sm">
-                        <label class="block text-base font-bold text-orange-900 mb-2 uppercase tracking-tight"><i class="fa-solid fa-triangle-exclamation mr-2"></i>Quais as consequências de NÃO sanarmos isso? *</label>
-                        <span class="text-sm text-orange-800 mb-4 block italic text-opacity-90 ml-8">Foque na urgência: impactos negativos em usuários, riscos à equipe, custos extras ou imagem institucional.</span>
-                        <textarea name="consequencias" rows="5" required class="w-full p-4 border-2 border-orange-200 rounded-xl input-focus bg-white" placeholder="Se não resolvermos isso, o que pode acontecer de ruim?"></textarea>
-                        
+                        <label class="block text-base font-bold text-orange-900 mb-2 uppercase tracking-tight"><i
+                                class="fa-solid fa-triangle-exclamation mr-2"></i>Quais as consequências de NÃO sanarmos
+                            isso? *</label>
+                        <span class="text-sm text-orange-800 mb-4 block italic text-opacity-90 ml-8">Foque na urgência:
+                            impactos negativos em usuários, riscos à equipe, custos extras ou imagem
+                            institucional.</span>
+                        <textarea name="consequencias" rows="5" required
+                            class="w-full p-4 border-2 border-orange-200 rounded-xl input-focus bg-white"
+                            placeholder="Se não resolvermos isso, o que pode acontecer de ruim?"></textarea>
+
                         <div class="mt-6 flex items-center bg-white p-4 rounded-xl border border-orange-100">
                             <label class="switch">
                                 <input type="checkbox" name="urgencia_critica" value="Sim">
                                 <span class="slider"></span>
                             </label>
-                            <span class="ml-4 text-sm font-bold text-orange-900">Esta demanda impede ou prejudica o atendimento imediato?</span>
+                            <span class="ml-4 text-sm font-bold text-orange-900">Esta demanda impede ou prejudica o
+                                atendimento imediato?</span>
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <label class="block text-base font-bold text-gray-800 mb-3">Solução Proposta *</label>
-                            <textarea name="solucao" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="Como pretendemos resolver o problema?"></textarea>
+                            <label class="block text-base font-bold text-gray-800 mb-3">Solução proposta *</label>
+                            <textarea name="solucao" rows="4" required
+                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
+                                placeholder="Como pretendemos resolver o problema?"></textarea>
                         </div>
                         <div>
-                            <label class="block text-base font-bold text-gray-800 mb-3">Quem serão os beneficiados? *</label>
-                            <textarea name="beneficiados" rows="4" required class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white" placeholder="Quem será impactado positivamente?"></textarea>
+                            <label class="block text-base font-bold text-gray-800 mb-3">Quem serão os beneficiados?
+                                *</label>
+                            <textarea name="beneficiados" rows="4" required
+                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
+                                placeholder="Quem será impactado positivamente?"></textarea>
                         </div>
                     </div>
                 </div>
@@ -185,27 +318,42 @@
                 </div>
                 <div class="p-10 space-y-12 bg-gray-50/50">
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-6">Recursos Necessários *</label>
+                        <label class="block text-base font-bold text-gray-800 mb-6">Recursos necessários *</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="Bens" class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Aquisição de bens (Móveis, equipamentos, eletrônicos)</span>
+                            <label
+                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="Bens"
+                                    class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Aquisição de bens (Móveis,
+                                    equipamentos, eletrônicos)</span>
                             </label>
-                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="Obras" class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Obra ou reforma (Pintura, construção, elétrica, hidráulica)</span>
+                            <label
+                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="Obras"
+                                    class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Obra ou reforma (Pintura,
+                                    construção, elétrica, hidráulica)</span>
                             </label>
-                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="RH" class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Capacitação de equipe/RH (Cursos, mentorias)</span>
+                            <label
+                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="RH"
+                                    class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Capacitação de equipe/RH (Cursos,
+                                    mentorias)</span>
                             </label>
-                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="Materiais" class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Material de consumo (Jogos, papelaria, mat de limpeza)</span>
+                            <label
+                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
+                                <input type="checkbox" name="recurso[]" value="Materiais"
+                                    class="w-6 h-6 rounded accent-apaeGreen">
+                                <span class="ml-4 text-gray-700 font-medium text-sm">Material de consumo (Jogos,
+                                    papelaria, mat de limpeza)</span>
                             </label>
                             <div class="md:col-span-2 mt-2">
-                                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1 ml-1">Outro recurso (Especifique abaixo)</label>
-                                <input type="text" name="recurso_outros" class="input-focus w-full p-4 border-2 border-white bg-white rounded-xl text-sm shadow-sm" placeholder="Ex: Veículo, Software específico, Mobiliário planejado...">
+                                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1 ml-1">Outro
+                                    recurso (Especifique abaixo)</label>
+                                <input type="text" name="recurso_outros"
+                                    class="input-focus w-full p-4 border-2 border-white bg-white rounded-xl text-sm shadow-sm"
+                                    placeholder="Ex: Veículo, Software específico, Mobiliário planejado...">
                             </div>
                         </div>
                     </div>
@@ -213,44 +361,82 @@
                     <div class="bg-green-50 p-8 rounded-2xl border border-green-100">
                         <label class="block text-lg font-bold text-apaeGreen mb-4">Status do orçamento/cotação *</label>
                         <div class="space-y-4">
-                            <label class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Estimativa" class="w-6 h-6 accent-apaeGreen mr-4" required> <span class="text-sm font-medium text-gray-700">Tenho uma estimativa simples (Possuo link/preço de referencia)</span>
+                            <label
+                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Estimativa"
+                                    class="w-6 h-6 accent-apaeGreen mr-4" required> <span
+                                    class="text-sm font-medium text-gray-700">Tenho uma estimativa simples (Possuo
+                                    link/preço de referencia)</span>
                             </label>
-                            <label class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Cotações" class="w-6 h-6 accent-apaeGreen mr-4"> <span class="text-sm font-medium text-gray-700">Tenho 1-2 cotações preliminares (Não oficiais mas serve como noção de custo)</span>
+                            <label
+                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Cotações"
+                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
+                                    class="text-sm font-medium text-gray-700">Tenho 1-2 cotações preliminares (Não
+                                    oficiais mas serve como noção de custo)</span>
                             </label>
-                            <label class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="3 Oficiais" class="w-6 h-6 accent-apaeGreen mr-4"> <span class="text-sm font-medium text-gray-700">Tenho 3 cotações oficiais</span>
+                            <label
+                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="3 Oficiais"
+                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
+                                    class="text-sm font-medium text-gray-700">Tenho 3 cotações oficiais</span>
                             </label>
-                            <label class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Apoio" class="w-6 h-6 accent-apaeGreen mr-4"> <span class="text-sm font-medium text-gray-700">Preciso de apoio para orçar (Setor de captação/projetos/compras fará a cotação)</span>
+                            <label
+                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Apoio"
+                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
+                                    class="text-sm font-medium text-gray-700">Preciso de apoio para orçar (Setor de
+                                    captação/projetos/compras fará a cotação)</span>
                             </label>
-                            <label class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Não se aplica" class="w-6 h-6 accent-apaeGreen mr-4"> <span class="text-sm font-medium text-gray-700">Não se aplica (Projeto sem custo financeiro)</span>
+                            <label
+                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
+                                <input type="radio" name="status_orc" value="Não se aplica"
+                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
+                                    class="text-sm font-medium text-gray-700">Não se aplica (Projeto sem custo
+                                    financeiro)</span>
                             </label>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-6 tracking-tighter">Necessita de serviços especializados? *</label>
+                        <label class="block text-base font-bold text-gray-800 mb-6 tracking-tighter">Necessita de
+                            serviços especializados? *</label>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input type="radio" name="especializado" value="Não" class="w-5 h-5 accent-apaeGreen mr-3" required> Não, compra simples.</label>
-                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input type="radio" name="especializado" value="Sim" class="w-5 h-5 accent-apaeGreen mr-3"> Sim.</label>
-                            <label class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input type="radio" name="especializado" value="Não sei" class="w-5 h-5 accent-apaeGreen mr-3"> Não sei informar.</label>
+                            <label
+                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input
+                                    type="radio" name="especializado" value="Não" class="w-5 h-5 accent-apaeGreen mr-3"
+                                    required> Não, compra simples</label>
+                            <label
+                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input
+                                    type="radio" name="especializado" value="Sim" class="w-5 h-5 accent-apaeGreen mr-3">
+                                Sim</label>
+                            <label
+                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input
+                                    type="radio" name="especializado" value="Não sei"
+                                    class="w-5 h-5 accent-apaeGreen mr-3"> Não sei informar</label>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-4 tracking-tighter">Observações / Notas Adicionais</label>
-                        <textarea name="observacoes" rows="4" class="input-focus w-full p-5 border-2 border-gray-200 rounded-xl bg-white" placeholder="Contexto extra..."></textarea>
+                        <label class="block text-base font-bold text-gray-800 mb-4 tracking-tighter">Observações / Notas
+                            Adicionais</label>
+                        <textarea name="observacoes" rows="4"
+                            class="input-focus w-full p-5 border-2 border-gray-200 rounded-xl bg-white"
+                            placeholder="Contexto extra..."></textarea>
                     </div>
 
                     <div class="pt-6">
-                        <label class="block text-base font-bold text-gray-800 mb-3 uppercase tracking-tighter">Anexos (Opcional)</label>
-                        <div class="border-4 border-dashed border-green-100 p-10 text-center rounded-2xl bg-white hover:bg-green-50 cursor-pointer relative transition-all group">
-                            <input type="file" id="fileInput" multiple class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                            <i class="fa-solid fa-cloud-arrow-up text-apaeGreen text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
-                            <span class="block text-base font-bold text-gray-700 group-hover:text-apaeGreen uppercase">Múltiplos arquivos</span>
+                        <label class="block text-base font-bold text-gray-800 mb-3 uppercase tracking-tighter">Anexos
+                            (Opcional)</label>
+                        <div
+                            class="border-4 border-dashed border-green-100 p-10 text-center rounded-2xl bg-white hover:bg-green-50 cursor-pointer relative transition-all group">
+                            <input type="file" id="fileInput" multiple
+                                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                            <i
+                                class="fa-solid fa-cloud-arrow-up text-apaeGreen text-5xl mb-4 group-hover:scale-110 transition-transform"></i>
+                            <span
+                                class="block text-base font-bold text-gray-700 group-hover:text-apaeGreen uppercase">Múltiplos
+                                arquivos</span>
                             <p class="text-xs text-gray-400 mt-2 italic font-medium">PDF, Imagens, Excel, Word</p>
                         </div>
                         <div id="fileList" class="mt-4 space-y-2"></div>
@@ -259,7 +445,8 @@
             </div>
 
             <div class="pt-20 pb-10 flex flex-col items-center reveal">
-                <button type="submit" class="w-full md:w-2/3 bg-apaeGreen hover:bg-[#5d8f46] text-white font-bold py-7 rounded-full text-2xl shadow-2xl transition-all transform hover:scale-[1.03] flex items-center justify-center uppercase">
+                <button type="submit"
+                    class="w-full md:w-2/3 bg-apaeGreen hover:bg-[#5d8f46] text-white font-bold py-7 rounded-full text-2xl shadow-2xl transition-all transform hover:scale-[1.03] flex items-center justify-center uppercase">
                     ENVIAR PARA CAPTAÇÃO <i class="fa-solid fa-paper-plane ml-5 text-xl"></i>
                 </button>
             </div>
@@ -273,7 +460,8 @@
                     <h4 class="text-apaeGreen font-bold uppercase tracking-widest text-xs mb-4">Onde Estamos</h4>
                     <div class="flex items-start justify-center md:justify-start space-x-3">
                         <i class="fa-solid fa-location-dot text-apaeYellow mt-1"></i>
-                        <p class="text-sm text-gray-600 leading-relaxed">Av. Hugo Schlosser, 236<br>Jardim Maluche, Brusque - SC</p>
+                        <p class="text-sm text-gray-600 leading-relaxed">Av. Hugo Schlosser, 236<br>Jardim Maluche,
+                            Brusque - SC</p>
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center space-y-6">
@@ -285,18 +473,26 @@
                 </div>
                 <div class="space-y-8 flex flex-col items-center md:items-end text-center md:text-right">
                     <div>
-                        <h4 class="text-apaeGreen font-bold uppercase tracking-widest text-xs mb-5">Conecte-se Conosco</h4>
+                        <h4 class="text-apaeGreen font-bold uppercase tracking-widest text-xs mb-5">Conecte-se Conosco
+                        </h4>
                         <div class="flex space-x-4">
-                            <a href="https://www.instagram.com/apaebrusque/" target="_blank" class="bg-apaeYellow text-gray-900 w-11 h-11 rounded-full flex items-center justify-center hover:bg-apaeGreen hover:text-white transition-all"><i class="fa-brands fa-instagram text-xl"></i></a>
-                            <a href="https://www.youtube.com/@ApaeBrusque" target="_blank" class="bg-apaeYellow text-gray-900 w-11 h-11 rounded-full flex items-center justify-center hover:bg-apaeGreen hover:text-white transition-all"><i class="fa-brands fa-youtube text-xl"></i></a>
-                            <a href="https://www.facebook.com/apaebrusque/" target="_blank" class="bg-apaeYellow text-gray-900 w-11 h-11 rounded-full flex items-center justify-center hover:bg-apaeGreen hover:text-white transition-all"><i class="fa-brands fa-facebook-f text-xl"></i></a>
+                            <a href="https://www.instagram.com/apaebrusque/" target="_blank"
+                                class="bg-apaeYellow text-gray-900 w-11 h-11 rounded-full flex items-center justify-center hover:bg-apaeGreen hover:text-white transition-all"><i
+                                    class="fa-brands fa-instagram text-xl"></i></a>
+                            <a href="https://www.youtube.com/@ApaeBrusque" target="_blank"
+                                class="bg-apaeYellow text-gray-900 w-11 h-11 rounded-full flex items-center justify-center hover:bg-apaeGreen hover:text-white transition-all"><i
+                                    class="fa-brands fa-youtube text-xl"></i></a>
+                            <a href="https://www.facebook.com/apaebrusque/" target="_blank"
+                                class="bg-apaeYellow text-gray-900 w-11 h-11 rounded-full flex items-center justify-center hover:bg-apaeGreen hover:text-white transition-all"><i
+                                    class="fa-brands fa-facebook-f text-xl"></i></a>
                         </div>
                     </div>
                     <p class="text-[10px] text-gray-400 uppercase font-black tracking-widest">© 2026 APAE Brusque</p>
                 </div>
             </div>
             <div class="mt-16 pt-8 border-t border-dashed border-gray-200 text-center">
-                <p class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.5em]">Desenvolvido por Lucas Picon</p>
+                <p class="text-[10px] font-bold text-gray-300 uppercase tracking-[0.5em]">Desenvolvido por Lucas Picon
+                </p>
             </div>
         </div>
     </footer>
@@ -307,7 +503,7 @@
             reveal();
         });
 
-        window.onscroll = function() {
+        window.onscroll = function () {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             document.getElementById("progress-bar").style.width = (winScroll / height) * 100 + "%";
@@ -371,8 +567,8 @@
             dataObj.recurso = recursos.join(", ");
             dataObj.allFiles = JSON.stringify(selectedFiles);
 
-            fetch('https://script.google.com/macros/s/AKfycbzuP6MMjQeacZtlG_zcvIf02vyapmtTWZrjduoHFxNVnfE0a8XPb7XXc-gJd7U6dajW/exec', { 
-                method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(dataObj) 
+            fetch('https://script.google.com/macros/s/AKfycbzuP6MMjQeacZtlG_zcvIf02vyapmtTWZrjduoHFxNVnfE0a8XPb7XXc-gJd7U6dajW/exec', {
+                method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(dataObj)
             }).then(() => {
                 document.getElementById('form-container').classList.add('hidden-state');
                 document.getElementById('main-form-section').classList.add('hidden-state');
@@ -382,4 +578,5 @@
         });
     </script>
 </body>
+
 </html>
