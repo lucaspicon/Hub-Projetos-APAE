@@ -251,7 +251,11 @@
                         <div class="md:col-span-1">
                             <label class="block text-sm font-bold text-gray-700 mb-3 tracking-tighter">Email corporativo
                                 *</label>
+<<<<<<< HEAD
                             <input type="email" name="email" required
+=======
+                            <input type="text" name="nome_projeto" required
+>>>>>>> 7f365369893516e4f52d948c9c53f24924f966d4
                                 class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
                                 placeholder="nome@apaebrusque.org.br">
                         </div>
@@ -267,7 +271,11 @@
                 <div class="p-10 space-y-12 bg-gray-50/50">
                     <div>
                         <label class="block text-base font-bold text-gray-800 mb-2">Descrição da necessidade *</label>
+<<<<<<< HEAD
                         <textarea name="problema" rows="4" minlength="40" required
+=======
+                        <textarea name="problema" rows="4" required
+>>>>>>> 7f365369893516e4f52d948c9c53f24924f966d4
                             class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
                             placeholder="O que motivou esta ideia?"></textarea>
                     </div>
@@ -279,7 +287,11 @@
                         <span class="text-sm text-orange-800 mb-4 block italic text-opacity-90 ml-8">Foque na urgência:
                             impactos negativos em usuários, riscos à equipe, custos extras ou imagem
                             institucional.</span>
+<<<<<<< HEAD
                         <textarea name="consequencias" rows="5" minlength="40" required
+=======
+                        <textarea name="consequencias" rows="5" required
+>>>>>>> 7f365369893516e4f52d948c9c53f24924f966d4
                             class="w-full p-4 border-2 border-orange-200 rounded-xl input-focus bg-white"
                             placeholder="Se não resolvermos isso, o que pode acontecer de ruim?"></textarea>
 
@@ -594,10 +606,14 @@
             dataObj.allFiles = JSON.stringify(selectedFiles);
 
             fetch('https://script.google.com/macros/s/AKfycbzuP6MMjQeacZtlG_zcvIf02vyapmtTWZrjduoHFxNVnfE0a8XPb7XXc-gJd7U6dajW/exec', {
+<<<<<<< HEAD
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams(dataObj)
+=======
+                method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(dataObj)
+>>>>>>> 7f365369893516e4f52d948c9c53f24924f966d4
             }).then(() => {
                 document.getElementById('form-container').classList.add('hidden-state');
                 document.getElementById('main-form-section').classList.add('hidden-state');
