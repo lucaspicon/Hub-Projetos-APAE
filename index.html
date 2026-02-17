@@ -87,6 +87,27 @@
             box-shadow: 0 0 15px rgba(115, 176, 87, 0.15);
         }
 
+        /* Estados de Validação */
+        .input-valid {
+            border-color: #73b057 !important;
+            background-color: #f1f8ee !important;
+        }
+
+        .input-invalid {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+
+        /* Contador de caracteres discreto */
+        .char-counter {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 4px;
+            text-align: right;
+            transition: color 0.3s;
+        }
+
         /* Estilo iOS Switch */
         .switch {
             position: relative;
@@ -156,7 +177,61 @@
         }
 
         .hidden-state {
-            display: none;
+            display: none !important;
+        }
+
+        /* Efeito de recolher o formulário */
+        .form-collapsed {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Container de Carregamento Centralizado */
+        #loader-container {
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            items-center: center;
+            justify-content: center;
+        }
+
+        /* Barra de Progresso Estilo Android/Moderno */
+        .progress-loader {
+            width: 100%;
+            max-width: 300px;
+            height: 6px;
+            background-color: #f1f8ee;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin: 20px auto;
+        }
+
+        .progress-loader::after {
+            content: "";
+            width: 40%;
+            height: 100%;
+            background-color: #73b057;
+            position: absolute;
+            left: -40%;
+            border-radius: 10px;
+            animation: progressLoop 1.5s infinite linear;
+        }
+
+        @keyframes progressLoop {
+            0% {
+                left: -40%;
+            }
+
+            100% {
+                left: 100%;
+            }
         }
     </style>
 </head>
@@ -165,19 +240,32 @@
 
     <div id="progress-bar"></div>
 
-    <header class="animated-header text-white py-24 px-6 text-center shadow-lg">
+    <header class="animated-header text-white py-12 md:py-24 px-6 text-center shadow-lg">
         <div class="max-w-4xl mx-auto relative z-10">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight drop-shadow-md">Hub de Projetos e Ideias APAE
+            <h1 class="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 tracking-tight drop-shadow-md">Hub de Projetos e Ideias APAE
             </h1>
             <p class="text-xl font-light opacity-90 mb-8 tracking-wide">Setor de Captação de Recursos</p>
             <div class="h-2 w-32 bg-apaeYellow mx-auto rounded-full"></div>
         </div>
     </header>
+    <div id="loader-container" class="max-w-xl mx-auto px-4 mb-60 hidden-state text-center mt-20">
+        <div class="bg-white p-12 rounded-3xl tilda-shadow border border-gray-100">
+            <div class="inline-block p-4 rounded-full bg-apaeAccentGreen mb-6">
+                <i class="fa-solid fa-cloud-arrow-up text-apaeGreen text-4xl animate-bounce"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2 uppercase tracking-tight">Enviando Proposta</h3>
+            <p class="text-sm text-gray-500 mb-6">Aguarde um instante enquanto organizamos seus dados e arquivos...</p>
 
-    <div id="success-message" class="max-w-3xl mx-auto mt-10 px-4 hidden-state text-center">
+            <div class="progress-loader"></div>
+
+            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-[0.2em] mt-4">Setor de Captação - APAE
+                Brusque</p>
+        </div>
+    </div>
+    <div id="success-message" class="max-w-3xl mx-auto mt-10 px-4 hidden-state text-center mb-60 pb-10">
         <div class="bg-white/90 backdrop-blur-md rounded-3xl tilda-shadow p-12 border-t-8 border-apaeGreen">
             <div class="text-apaeGreen text-7xl mb-6"><i class="fa-solid fa-circle-check"></i></div>
-            <h2 class="text-3xl font-bold text-gray-800 mb-4">Proposta Recebida com Sucesso!</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Proposta recebida com sucesso!</h2>
             <p class="text-lg text-gray-600 mb-8 font-medium italic">"Sua ideia transforma vidas na APAE Brusque."</p>
             <button onclick="window.location.reload()"
                 class="bg-apaeGreen text-white px-12 py-4 rounded-full font-bold hover:scale-105 transition-all shadow-xl active:scale-95">
@@ -260,168 +348,272 @@
             </div>
 
             <div class="bg-white rounded-2xl tilda-shadow overflow-hidden reveal">
-                <div class="bg-apaeGreen p-6 flex items-center">
-                    <i class="fa-solid fa-stethoscope text-apaeYellow text-2xl mr-4 pl-4"></i>
-                    <h3 class="text-lg font-bold text-white uppercase tracking-widest">2. Diagnóstico de Impacto</h3>
+    <div class="bg-apaeGreen p-6 flex items-center">
+        <i class="fa-solid fa-circle-question text-apaeYellow text-2xl mr-4 pl-4"></i>
+        <h3 class="text-lg font-bold text-white uppercase tracking-widest text-left">2. O que queremos mudar?</h3>
+    </div>
+    
+    <div class="p-5 md:p-10 space-y-8 md:space-y-12 bg-gray-50/50">
+        <div>
+            <label class="block text-base font-bold text-gray-800 mb-2">Descrição da necessidade *</label>
+            <textarea name="problema" rows="4" minlength="40" required
+                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white text-sm md:text-base"
+                placeholder="O que motivou esta ideia?"></textarea>
+        </div>
+
+        <div class="bg-yellow-50 p-5 md:p-8 rounded-2xl border-l-4 md:border-l-8 border-apaeYellow shadow-sm">
+            <label class="block text-sm md:text-base font-bold text-orange-900 mb-2 uppercase tracking-tight">
+                <i class="fa-solid fa-triangle-exclamation mr-2"></i>Quais as consequências de NÃO sanarmos isso? *
+            </label>
+            
+            <span class="text-xs md:text-sm text-orange-800 mb-4 block italic leading-relaxed">
+                Foque na urgência: impactos em usuários, riscos à equipe ou custos extras.
+            </span>
+
+            <textarea name="consequencias" rows="5" minlength="40" required
+                class="w-full p-4 border-2 border-orange-200 rounded-xl input-focus bg-white text-sm md:text-base"
+                placeholder="Se não resolvermos isso, o que pode acontecer de ruim?"></textarea>
+
+            <div class="mt-6 flex flex-row items-start bg-white p-4 rounded-xl border border-orange-100">
+                <div class="flex-shrink-0">
+                    <label class="switch">
+                        <input type="checkbox" name="urgencia_critica" value="Sim">
+                        <span class="slider"></span>
+                    </label>
                 </div>
-                <div class="p-10 space-y-12 bg-gray-50/50">
-                    <div>
-                        <label class="block text-base font-bold text-gray-800 mb-2">Descrição da necessidade *</label>
-                        <textarea name="problema" rows="4" minlength="40" required
-                            class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
-                            placeholder="O que motivou esta ideia?"></textarea>
-                    </div>
-
-                    <div class="bg-yellow-50 p-8 rounded-2xl border-l-8 border-apaeYellow shadow-sm">
-                        <label class="block text-base font-bold text-orange-900 mb-2 uppercase tracking-tight"><i
-                                class="fa-solid fa-triangle-exclamation mr-2"></i>Quais as consequências de NÃO sanarmos
-                            isso? *</label>
-                        <span class="text-sm text-orange-800 mb-4 block italic text-opacity-90 ml-8">Foque na urgência:
-                            impactos negativos em usuários, riscos à equipe, custos extras ou imagem
-                            institucional.</span>
-                        <textarea name="consequencias" rows="5" minlength="40" required
-                            class="w-full p-4 border-2 border-orange-200 rounded-xl input-focus bg-white"
-                            placeholder="Se não resolvermos isso, o que pode acontecer de ruim?"></textarea>
-
-                        <div class="mt-6 flex items-center bg-white p-4 rounded-xl border border-orange-100">
-                            <label class="switch">
-                                <input type="checkbox" name="urgencia_critica" value="Sim">
-                                <span class="slider"></span>
-                            </label>
-                            <span class="ml-4 text-sm font-bold text-orange-900">Esta demanda impede ou prejudica o
-                                atendimento imediato?</span>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <label class="block text-base font-bold text-gray-800 mb-3">Solução proposta *</label>
-                            <textarea name="solucao" rows="4" required
-                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
-                                placeholder="Como pretendemos resolver o problema?"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-base font-bold text-gray-800 mb-3">Quem serão os beneficiados?
-                                *</label>
-                            <textarea name="beneficiados" rows="4" required
-                                class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white"
-                                placeholder="Quem será impactado positivamente?"></textarea>
-                        </div>
-                    </div>
-                </div>
+                <span class="ml-4 text-xs md:text-sm font-bold text-orange-900 leading-tight">
+                    Esta demanda impede ou prejudica o atendimento imediato?
+                </span>
             </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:grid-cols-2 gap-8">
+            <div>
+                <label class="block text-sm md:text-base font-bold text-gray-800 mb-3">Solução proposta *</label>
+                <textarea name="solucao" rows="4" required
+                    class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white text-sm md:text-base"
+                    placeholder="Como pretendemos resolver o problema?"></textarea>
+            </div>
+            <div>
+                <label class="block text-base font-bold text-gray-800 mb-3">Quem serão os beneficiados? *</label>
+                <textarea name="beneficiados" rows="4" required
+                    class="input-focus w-full p-4 border-2 border-gray-200 rounded-xl bg-white text-sm md:text-base"
+                    placeholder="Quem será impactado positivamente?"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
 
             <div class="bg-white rounded-2xl tilda-shadow overflow-hidden reveal">
                 <div class="bg-apaeGreen p-6 flex items-center">
                     <i class="fa-solid fa-coins text-apaeYellow text-2xl mr-4 pl-4"></i>
-                    <h3 class="text-lg font-bold text-white uppercase tracking-widest">3. Viabilidade Técnica</h3>
+                    <h3 class="text-lg font-bold text-white uppercase tracking-widest">3. O que é preciso para realizar?
+                    </h3>
                 </div>
                 <div class="p-10 space-y-12 bg-gray-50/50">
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-6">Recursos necessários *</label>
+                        <label class="block text-base font-bold text-gray-800 mb-6 tracking-tighter">
+                            <i class="fa-solid fa-boxes-stacked mr-2 text-apaeGreen"></i>Recursos necessários *
+                        </label>
+
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <label
-                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="Bens"
-                                    class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Aquisição de bens (Móveis,
-                                    equipamentos, eletrônicos)</span>
+                                class="relative flex items-center p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="checkbox" name="recurso[]" value="Bens" class="peer hidden">
+                                <div
+                                    class="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl group-hover:bg-green-100 peer-checked:bg-green-100 transition-colors">
+                                    <i
+                                        class="fa-solid fa-couch text-xl text-gray-400 group-hover:text-apaeGreen peer-checked:text-apaeGreen"></i>
+                                </div>
+                                <div class="ml-4 flex flex-col">
+                                    <span class="text-sm font-bold text-gray-700">Aquisição de Bens</span>
+                                    <span class="text-[10px] text-gray-400 uppercase">Móveis, equipamentos,
+                                        eletrônicos</span>
+                                </div>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
+
                             <label
-                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="Obras"
-                                    class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Obra ou reforma (Pintura,
-                                    construção, elétrica, hidráulica)</span>
+                                class="relative flex items-center p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="checkbox" name="recurso[]" value="Obras" class="peer hidden">
+                                <div
+                                    class="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl group-hover:bg-green-100 peer-checked:bg-green-100 transition-colors">
+                                    <i
+                                        class="fa-solid fa-trowel-bricks text-xl text-gray-400 group-hover:text-apaeGreen peer-checked:text-apaeGreen"></i>
+                                </div>
+                                <div class="ml-4 flex flex-col">
+                                    <span class="text-sm font-bold text-gray-700">Obra ou Reforma</span>
+                                    <span class="text-[10px] text-gray-400 uppercase">Pintura, construção,
+                                        elétrica</span>
+                                </div>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
+
                             <label
-                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="RH"
-                                    class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Capacitação de equipe/RH (Cursos,
-                                    mentorias)</span>
+                                class="relative flex items-center p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="checkbox" name="recurso[]" value="RH" class="peer hidden">
+                                <div
+                                    class="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl group-hover:bg-green-100 peer-checked:bg-green-100 transition-colors">
+                                    <i
+                                        class="fa-solid fa-user-graduate text-xl text-gray-400 group-hover:text-apaeGreen peer-checked:text-apaeGreen"></i>
+                                </div>
+                                <div class="ml-4 flex flex-col">
+                                    <span class="text-sm font-bold text-gray-700">Capacitação / RH</span>
+                                    <span class="text-[10px] text-gray-400 uppercase">Cursos, mentorias,
+                                        treinamentos</span>
+                                </div>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
+
                             <label
-                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl cursor-pointer hover:border-apaeGreen transition shadow-sm">
-                                <input type="checkbox" name="recurso[]" value="Materiais"
-                                    class="w-6 h-6 rounded accent-apaeGreen">
-                                <span class="ml-4 text-gray-700 font-medium text-sm">Material de consumo (Jogos,
-                                    papelaria, mat de limpeza)</span>
+                                class="relative flex items-center p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="checkbox" name="recurso[]" value="Materiais" class="peer hidden">
+                                <div
+                                    class="w-12 h-12 flex items-center justify-center bg-gray-50 rounded-xl group-hover:bg-green-100 peer-checked:bg-green-100 transition-colors">
+                                    <i
+                                        class="fa-solid fa-pencil-ruler text-xl text-gray-400 group-hover:text-apaeGreen peer-checked:text-apaeGreen"></i>
+                                </div>
+                                <div class="ml-4 flex flex-col">
+                                    <span class="text-sm font-bold text-gray-700">Material de Consumo</span>
+                                    <span class="text-[10px] text-gray-400 uppercase">Jogos, papelaria, limpeza</span>
+                                </div>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
-                            <div class="md:col-span-2 mt-2">
-                                <label class="block text-[10px] font-bold text-gray-400 uppercase mb-1 ml-1">Outro
-                                    recurso (Especifique abaixo)</label>
-                                <input type="text" name="recurso_outros"
-                                    class="input-focus w-full p-4 border-2 border-white bg-white rounded-xl text-sm shadow-sm"
-                                    placeholder="Ex: Veículo, Software específico, Mobiliário planejado...">
-                            </div>
                         </div>
                     </div>
 
                     <div class="bg-green-50 p-8 rounded-2xl border border-green-100">
-                        <label class="block text-lg font-bold text-apaeGreen mb-4">Status do orçamento/cotação *</label>
-                        <div class="space-y-4">
+                        <label class="block text-lg font-bold text-apaeGreen mb-6 tracking-tight uppercase">
+                            Status do orçamento / cotação *
+                        </label>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <label
-                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Estimativa"
-                                    class="w-6 h-6 accent-apaeGreen mr-4" required> <span
-                                    class="text-sm font-medium text-gray-700">Tenho uma estimativa simples (Possuo
-                                    link/preço de referencia)</span>
+                                class="relative flex flex-col p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="radio" name="status_orc" value="Estimativa" class="peer hidden" required>
+                                <div class="mb-2">
+                                    <span
+                                        class="text-xs font-black uppercase text-gray-400 group-hover:text-apaeGreen transition-colors">Nível
+                                        1</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-700">Estimativa Simples</span>
+                                <span class="text-xs text-gray-500 mt-1 italic">Possuo link ou preço de referência na
+                                    internet.</span>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
+
                             <label
-                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Cotações"
-                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
-                                    class="text-sm font-medium text-gray-700">Tenho 1-2 cotações preliminares (Não
-                                    oficiais mas serve como noção de custo)</span>
+                                class="relative flex flex-col p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="radio" name="status_orc" value="Cotações" class="peer hidden">
+                                <div class="mb-2">
+                                    <span
+                                        class="text-xs font-black uppercase text-gray-400 group-hover:text-apaeGreen transition-colors">Nível
+                                        2</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-700">Cotações Preliminares</span>
+                                <span class="text-xs text-gray-500 mt-1 italic">Tenho 1 ou 2 orçamentos (ajuda na noção
+                                    de custo).</span>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
+
                             <label
-                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="3 Oficiais"
-                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
-                                    class="text-sm font-medium text-gray-700">Tenho 3 cotações oficiais</span>
+                                class="relative flex flex-col p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="radio" name="status_orc" value="3 Oficiais" class="peer hidden">
+                                <div class="mb-2">
+                                    <span
+                                        class="text-xs font-black uppercase text-gray-400 group-hover:text-apaeGreen transition-colors">Nível
+                                        3</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-700">3 Cotações Oficiais</span>
+                                <span class="text-xs text-gray-500 mt-1 italic">Dossiê completo conforme exigência
+                                    técnica.</span>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
+
                             <label
-                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Apoio"
-                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
-                                    class="text-sm font-medium text-gray-700">Preciso de apoio para orçar (Setor de
-                                    captação/projetos/compras fará a cotação)</span>
-                            </label>
-                            <label
-                                class="flex items-center p-4 bg-white rounded-xl border-2 border-transparent hover:border-apaeGreen transition shadow-sm">
-                                <input type="radio" name="status_orc" value="Não se aplica"
-                                    class="w-6 h-6 accent-apaeGreen mr-4"> <span
-                                    class="text-sm font-medium text-gray-700">Não se aplica (Projeto sem custo
-                                    financeiro)</span>
+                                class="relative flex flex-col p-5 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="radio" name="status_orc" value="Apoio" class="peer hidden">
+                                <div class="mb-2">
+                                    <span
+                                        class="text-xs font-black uppercase text-gray-400 group-hover:text-apaeGreen transition-colors">Suporte</span>
+                                </div>
+                                <span class="text-sm font-bold text-gray-700">Preciso de Apoio</span>
+                                <span class="text-xs text-gray-500 mt-1 italic">O setor de captação/compras deve
+                                    auxiliar na cotação.</span>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
                             </label>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-6 tracking-tighter">Necessita de
-                            serviços especializados? *</label>
+                        <label class="block text-base font-bold text-gray-800 mb-6 tracking-tighter uppercase">
+                            <i class="fa-solid fa-hand-holding-wrench mr-2 text-apaeGreen"></i>Necessita de serviços
+                            especializados? *
+                        </label>
+
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <label
-                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input
-                                    type="radio" name="especializado" value="Não" class="w-5 h-5 accent-apaeGreen mr-3"
-                                    required> Não, compra simples</label>
+                                class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="radio" name="especializado" value="Não" class="peer hidden" required>
+                                <i
+                                    class="fa-solid fa-cart-shopping text-2xl mb-3 text-gray-300 group-hover:text-apaeGreen peer-checked:text-apaeGreen transition-colors"></i>
+                                <span class="text-sm font-bold text-gray-700">Não, compra simples</span>
+                                <span class="text-[10px] text-gray-400 mt-1 uppercase">Apenas entrega do bem</span>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
+                            </label>
+
                             <label
-                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input
-                                    type="radio" name="especializado" value="Sim" class="w-5 h-5 accent-apaeGreen mr-3">
-                                Sim</label>
+                                class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="radio" name="especializado" value="Sim" class="peer hidden">
+                                <i
+                                    class="fa-solid fa-tools text-2xl mb-3 text-gray-300 group-hover:text-apaeGreen peer-checked:text-apaeGreen transition-colors"></i>
+                                <span class="text-sm font-bold text-gray-700">Sim</span>
+                                <span class="text-[10px] text-gray-400 mt-1 uppercase">Requer instalação ou mão de
+                                    obra</span>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
+                            </label>
+
                             <label
-                                class="flex items-center p-5 border-2 border-white bg-white rounded-xl text-sm cursor-pointer hover:border-apaeGreen transition shadow-sm"><input
-                                    type="radio" name="especializado" value="Não sei"
-                                    class="w-5 h-5 accent-apaeGreen mr-3"> Não sei informar</label>
+                                class="relative flex flex-col items-center text-center p-6 bg-white rounded-2xl border-2 border-gray-100 cursor-pointer hover:border-apaeGreen hover:bg-green-50 transition-all shadow-sm group">
+                                <input type="radio" name="especializado" value="Não sei" class="peer hidden">
+                                <i
+                                    class="fa-solid fa-circle-question text-2xl mb-3 text-gray-300 group-hover:text-apaeGreen peer-checked:text-apaeGreen transition-colors"></i>
+                                <span class="text-sm font-bold text-gray-700">Não sei informar</span>
+                                <span class="text-[10px] text-gray-400 mt-1 uppercase">Avaliação técnica
+                                    necessária</span>
+                                <div
+                                    class="absolute inset-0 border-2 border-transparent peer-checked:border-apaeGreen rounded-2xl pointer-events-none transition-all">
+                                </div>
+                            </label>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-base font-bold text-gray-800 mb-4 tracking-tighter">Observações / Notas
-                            Adicionais</label>
+                        <label
+                            class="block text-base font-bold text-gray-800 mb-4 tracking-tighter uppercase">Observações
+                            / Notas Adicionais</label>
                         <textarea name="observacoes" rows="4"
-                            class="input-focus w-full p-5 border-2 border-gray-200 rounded-xl bg-white"
+                            class="w-full p-5 border-2 border-gray-200 rounded-xl bg-white outline-none focus:border-apaeGreen transition-all"
                             placeholder="Contexto extra..."></textarea>
                     </div>
 
@@ -437,7 +629,8 @@
                             <span
                                 class="block text-base font-bold text-gray-700 group-hover:text-apaeGreen uppercase">Múltiplos
                                 arquivos</span>
-                            <p class="text-xs text-gray-400 mt-2 italic font-medium">PDF, Imagens, Excel, Word</p>
+                            <p class="text-xs text-gray-400 mt-2 italic font-medium uppercase">PDF, Imagens, Excel, Word
+                            </p>
                         </div>
                         <div id="fileList" class="mt-4 space-y-2"></div>
                     </div>
@@ -452,6 +645,106 @@
             </div>
         </form>
     </main>
+
+    <section id="faq" class="max-w-4xl mx-auto px-4 mb-32 reveal">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-800 tracking-tighter uppercase">
+                <i class="fa-solid fa-circle-question text-apaeYellow mr-2"></i>Dúvidas Frequentes
+            </h2>
+            <div class="h-1 w-20 bg-apaeGreen mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="space-y-4">
+            <details
+                class="group bg-white rounded-2xl tilda-shadow overflow-hidden border-2 border-transparent hover:border-apaeGreen transition-all">
+                <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                    <span class="font-bold text-gray-700">O que pode ser enviado pelo Hub?</span>
+                    <span class="text-apaeGreen transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4">
+                    Qualquer demanda que necessite de recursos financeiros ou técnicos: desde materiais de consumo
+                    pedagógico, equipamentos de saúde, equipamentos para zeladoria, reformas estruturais e até novos
+                    projetos de inovação
+                    institucional e benéficos aos nossos usuários.
+                </div>
+            </details>
+
+            <details
+                class="group bg-white rounded-2xl tilda-shadow overflow-hidden border-2 border-transparent hover:border-apaeGreen transition-all">
+                <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                    <span class="font-bold text-gray-700">Minha ideia será executada imediatamente?</span>
+                    <span class="text-apaeGreen transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4">
+                    O Hub é a etapa de <strong>diagnóstico</strong>. Após o envio da proposta, necessidade ou projeto, o
+                    setor de captação irá analisar a
+                    viabilidade, buscar editais ou parceiros e refinar o projeto tecnicamente. A execução depende da
+                    disponibilidade de recursos captados.
+                </div>
+            </details>
+
+            <details
+                class="group bg-white rounded-2xl tilda-shadow overflow-hidden border-2 border-transparent hover:border-apaeGreen transition-all">
+                <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                    <span class="font-bold text-gray-700">Preciso ter orçamentos oficiais para enviar?</span>
+                    <span class="text-apaeGreen transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4">
+                    Não é obrigatório, mas facilita muito o processo. Se não tiver, selecione a opção <strong>"Preciso
+                        de apoio para orçar"</strong> e nós auxiliaremos na busca de valores de referência.
+                </div>
+            </details>
+
+            <details
+                class="group bg-white rounded-2xl tilda-shadow overflow-hidden border-2 border-transparent hover:border-apaeGreen transition-all">
+                <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+                    <span class="font-bold text-gray-700">Como sei se minha proposta foi aceita?</span>
+                    <span class="text-apaeGreen transition group-open:rotate-180">
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </span>
+                </summary>
+                <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed border-t border-gray-50 pt-4">
+                    Você receberá uma confirmação automática e o projeto entrará no nosso <strong>Quadro de Gestão
+                    </strong>. Caso precisemos de mais detalhes, o analista responsável entrará em contato
+                    via e-mail, Spark ou WhatsApp.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <section id="suporte-direto" class="max-w-4xl mx-auto px-4 mb-32 reveal">
+        <div
+            class="bg-apaeAccentGreen/50 border-2 border-dashed border-apaeGreen rounded-3xl p-8 md:p-12 text-center shadow-sm">
+            <div
+                class="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full text-apaeGreen shadow-sm mb-6">
+                <i class="fa-solid fa-comments text-2xl"></i>
+            </div>
+
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 tracking-tighter">Não encontrou o que precisava?</h3>
+            <p class="text-gray-600 mb-8 max-w-lg mx-auto leading-relaxed">
+                Se a sua dúvida é muito específica ou se você encontrou alguma dificuldade técnica, fale diretamente com
+                o nosso setor.
+            </p>
+
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/5547991448483?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20o%20Hub%20de%20Projetos."
+                    target="_blank"
+                    class="hover-lift active-press w-full md:w-auto bg-[#25D366] text-white px-8 py-4 rounded-full font-bold flex items-center justify-center shadow-lg transition-all">
+                    <i class="fa-brands fa-whatsapp mr-3 text-xl"></i> WhatsApp da Captação
+                </a>
+            </div>
+
+            <p class="mt-8 text-[10px] text-gray-400 font-bold uppercase tracking-widest">
+                Atendimento de Segunda a Sexta, das 08h às 17h
+            </p>
+        </div>
+    </section>
 
     <footer class="bg-gray-50 pt-16 pb-12 px-6 border-t border-gray-200">
         <div class="max-w-6xl mx-auto">
@@ -499,9 +792,60 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // --- MANTENDO LOGICA ORIGINAL ---
             document.getElementById('data_proposta_hidden').value = new Date().toLocaleDateString('pt-BR');
             reveal();
+
+            // --- VALIDAÇÃO EM TEMPO REAL ---
+            const inputsParaValidar = document.querySelectorAll('input[required], textarea[required]');
+            inputsParaValidar.forEach(input => {
+                if (input.tagName === 'TEXTAREA' && input.getAttribute('minlength')) {
+                    const counter = document.createElement('div');
+                    counter.className = 'char-counter text-gray-400';
+                    input.parentNode.appendChild(counter);
+                    updateCounter(input, counter);
+                }
+                input.addEventListener('input', () => {
+                    validateField(input);
+                });
+            });
         });
+
+        function validateField(input) {
+            let isValid = false;
+            const value = input.value.trim();
+            if (input.type === 'email') {
+                isValid = value.endsWith('@apaebrusque.org.br') && value.length > 18;
+            }
+            else if (input.tagName === 'TEXTAREA' && input.getAttribute('minlength')) {
+                const min = parseInt(input.getAttribute('minlength'));
+                isValid = value.length >= min;
+                updateCounter(input, input.parentNode.querySelector('.char-counter'));
+            }
+            else {
+                isValid = value.length >= 3;
+            }
+
+            if (isValid) {
+                input.classList.remove('input-invalid');
+                input.classList.add('input-valid');
+            } else {
+                input.classList.remove('input-valid');
+                if (value.length > 0) input.classList.add('input-invalid');
+            }
+        }
+
+        function updateCounter(input, counter) {
+            if (!counter) return;
+            const min = input.getAttribute('minlength');
+            const current = input.value.length;
+            counter.innerText = `${current} / ${min} caracteres mínimos`;
+            if (current >= min) {
+                counter.classList.replace('text-gray-400', 'text-apaeGreen');
+            } else {
+                counter.classList.replace('text-apaeGreen', 'text-gray-400');
+            }
+        }
 
         window.onscroll = function () {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
@@ -560,9 +904,8 @@
 
         function removeFile(index) { selectedFiles.splice(index, 1); renderFileList(); }
 
+        // --- ENVIO DO FORMULÁRIO COM EFEITO DE RECOLHER ---
         document.getElementById('hubForm').addEventListener('submit', e => {
-            // --- 1. VALIDAÇÃO DE CAMPOS (DOR MÍNIMA) ---
-            // Isso ativa o aviso do navegador se os campos estiverem muito curtos
             if (!e.target.checkValidity()) {
                 e.target.reportValidity();
                 return;
@@ -570,44 +913,53 @@
 
             e.preventDefault();
 
-            // --- 2. TRAVA DE SEGURANÇA (15MB) ---
             const MAX_SIZE = 15 * 1024 * 1024;
             const totalSize = selectedFiles.reduce((acc, file) => acc + file.rawSize, 0);
 
             if (totalSize > MAX_SIZE) {
-                alert("⚠️ O limite total de anexos é de 15MB.\nSeus arquivos somam " + (totalSize / (1024 * 1024)).toFixed(2) + "MB.\n\nPor favor, remova arquivos pesados para prosseguir.");
+                alert("⚠️ O limite total de anexos é de 15MB.");
                 return;
             }
 
-            const btn = e.target.querySelector('button[type="submit"]');
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-fan fa-spin mr-3"></i> PROCESSANDO...';
+            const formContainer = document.getElementById('form-container');
+            const mainSection = document.getElementById('main-form-section');
+            const loader = document.getElementById('loader-container');
+            const successMessage = document.getElementById('success-message');
 
+            // Coleta de dados
             const formData = new FormData(e.target);
             const dataObj = Object.fromEntries(formData.entries());
-
             const recursos = [];
             e.target.querySelectorAll('input[name="recurso[]"]:checked').forEach(cb => recursos.push(cb.value));
             if (dataObj.recurso_outros) recursos.push("Outros: " + dataObj.recurso_outros);
-
             dataObj.recurso = recursos.join(", ");
             dataObj.allFiles = JSON.stringify(selectedFiles);
 
+            // 2. Efeito visual: Recolhe o formulário e mostra a barra
+            formContainer.classList.add('form-collapsed');
+            mainSection.classList.add('form-collapsed');
+
+            setTimeout(() => {
+                loader.classList.remove('hidden-state');
+                loader.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 150);
+
+            // 4. Fetch para o Google Script
             fetch('https://script.google.com/macros/s/AKfycbzuP6MMjQeacZtlG_zcvIf02vyapmtTWZrjduoHFxNVnfE0a8XPb7XXc-gJd7U6dajW/exec', {
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams(dataObj)
             }).then(() => {
-                document.getElementById('form-container').classList.add('hidden-state');
-                document.getElementById('main-form-section').classList.add('hidden-state');
-                document.getElementById('success-message').classList.remove('hidden-state');
+                loader.classList.add('hidden-state');
+                successMessage.classList.remove('hidden-state');
                 dispararConfete();
-                window.scrollTo(0, 0);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }).catch(err => {
                 alert("Erro ao enviar. Tente novamente.");
-                btn.disabled = false;
-                btn.innerHTML = 'ENVIAR PARA CAPTAÇÃO';
+                loader.classList.add('hidden-state');
+                formContainer.classList.remove('form-collapsed');
+                mainSection.classList.remove('form-collapsed');
             });
         });
     </script>
